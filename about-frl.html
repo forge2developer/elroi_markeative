@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Learn about El-Roi Markeative Solutions — a 360° Digital Marketing agency blending bold creative vision with deep technical expertise.">
+
+    <!-- grid css -->
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style-friendly.css">
+    <!-- page title -->
+    <title>About Us - El-Roi Markeative</title>
+
+    <style>
+        /* ======= About Page Custom Styles ======= */
+
+        /* --- File Explorer --- */
+        .mil-file-explorer {
+            background: rgba(20, 20, 20, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .mil-explorer-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mil-toolbar-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mil-toolbar-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .mil-toolbar-dots span:nth-child(1) { background: #ff5f57; }
+        .mil-toolbar-dots span:nth-child(2) { background: #febc2e; }
+        .mil-toolbar-dots span:nth-child(3) { background: #28c840; }
+
+        .mil-toolbar-path {
+            font-family: "Outfit", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 0.5px;
+        }
+
+        .mil-toolbar-path span {
+            color: #fec700;
+        }
+
+        .mil-explorer-body {
+            padding: 30px;
+        }
+
+        /* Folder Header */
+        .mil-folder-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            margin-bottom: 2px;
+        }
+
+        .mil-folder-header:hover {
+            background: rgba(254, 199, 0, 0.06);
+            border-color: rgba(254, 199, 0, 0.15);
+        }
+
+        .mil-folder-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(254, 199, 0, 0.15), rgba(254, 199, 0, 0.05));
+            color: #fec700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .mil-folder-info {
+            flex: 1;
+        }
+
+        .mil-folder-name {
+            font-family: "Syne", "Anton", sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 0 3px 0;
+        }
+
+        .mil-folder-meta {
+            font-family: "Outfit", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+            margin: 0;
+        }
+
+        .mil-folder-size {
+            font-family: "Outfit", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .mil-folder-toggle {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .mil-folder-header[aria-expanded="true"] .mil-folder-toggle {
+            transform: rotate(90deg);
+        }
+
+        /* File List */
+        .mil-file-list {
+            padding-left: 24px;
+            margin-left: 24px;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .mil-file-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin: 4px 0;
+        }
+
+        .mil-file-row:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .mil-file-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .mil-file-icon.mil-img  { background: rgba(155, 89, 182, 0.12); color: #9b59b6; }
+        .mil-file-icon.mil-pdf  { background: rgba(231, 76, 60, 0.12);  color: #e74c3c; }
+        .mil-file-icon.mil-zip  { background: rgba(243, 156, 18, 0.12); color: #f39c12; }
+        .mil-file-icon.mil-doc  { background: rgba(41, 128, 185, 0.12); color: #2980b9; }
+        .mil-file-icon.mil-xls  { background: rgba(39, 174, 96, 0.12);  color: #27ae60; }
+        .mil-file-icon.mil-vid  { background: rgba(231, 76, 60, 0.12);  color: #e74c3c; }
+        .mil-file-icon.mil-psd  { background: rgba(52, 152, 219, 0.12); color: #3498db; }
+
+        .mil-file-name {
+            flex: 1;
+            font-family: "Outfit", sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 0;
+        }
+
+        .mil-file-size {
+            font-family: "Outfit", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .mil-file-action {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .mil-file-action:hover {
+            background: rgba(254, 199, 0, 0.1);
+            border-color: rgba(254, 199, 0, 0.3);
+            color: #fec700;
+        }
+
+        .mil-folder-group {
+            margin-bottom: 20px;
+        }
+
+        .mil-folder-group:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Values Section --- */
+        .mil-value-card {
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.02);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .mil-value-card:hover {
+            border-color: rgba(254, 199, 0, 0.2);
+            background: rgba(254, 199, 0, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .mil-value-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, rgba(254, 199, 0, 0.15), rgba(254, 199, 0, 0.05));
+            color: #fec700;
+        }
+
+        .mil-value-title {
+            font-family: "Syne", "Anton", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #141414;
+            margin-bottom: 12px;
+        }
+
+        .mil-value-desc {
+            font-family: "Outfit", sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- Timeline --- */
+        .mil-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .mil-timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(254, 199, 0, 0.4), rgba(254, 199, 0, 0.05));
+        }
+
+        .mil-timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .mil-timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .mil-timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -46px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fec700;
+            border: 3px solid #141414;
+            box-shadow: 0 0 0 3px rgba(254, 199, 0, 0.25);
+        }
+
+        .mil-timeline-year {
+            font-family: "Syne", "Anton", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fec700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .mil-timeline-title {
+            font-family: "Syne", "Anton", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #141414;
+            margin-bottom: 8px;
+        }
+
+        .mil-timeline-desc {
+            font-family: "Outfit", sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .mil-explorer-toolbar {
+                padding: 14px 20px;
+            }
+            .mil-toolbar-path {
+                display: none;
+            }
+            .mil-explorer-body {
+                padding: 20px;
+            }
+            .mil-folder-header {
+                padding: 14px 18px;
+            }
+            .mil-file-list {
+                padding-left: 14px;
+                margin-left: 14px;
+            }
+            .mil-file-row {
+                padding: 12px 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mil-folder-size {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- wrapper -->
+    <div id="smooth-wrapper" class="mil-page-wrapper">
+
+        <div id="swup-opm"></div>
+
+        <!-- cursor -->
+        <div class="mil-cursor-follower"></div>
+        <!-- cursor end -->
+
+        <!-- preloader -->
+        <div class="mil-preloader">
+            <div class="mil-preloader-animation">
+                <div class="mil-pos-abs mil-animation-1">
+                    <p class="mil-head1 mil-m1">Pioneering</p>
+                    <p class="mil-head1 mil-a2">Creative</p>
+                    <p class="mil-head1 mil-m1">Excellence</p>
+                </div>
+                <div class="mil-pos-abs mil-animation-2">
+                    <div class="mil-reveal-frame">
+                        <p class="mil-reveal-box"></p>
+                        <p class="mil-head1 mil-m1">elroi markeative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+        <!-- scroll progress -->
+        <div class="mil-progress-track">
+            <div class="mil-progress"></div>
+        </div>
+        <!-- scroll progress end -->
+
+        <!-- fixed elements -->
+        <div class="mil-fixed">
+            <div class="mil-top-panel">
+                <div class="mil-left-side">
+                    <a href="home-1.html" class="mil-logo mil-scroll-to" data-no-swup>
+                        <i class="far fa-cube"></i>
+                        <span>El-Roi</span>
+                    </a>
+                </div>
+                <div class="mil-buttons-tp-frame mil-c-gone">
+                    <p class="mil-stylized mil-m1 mil-phone"><span class="mil-m2">Phone:</span> +28 (054) 167 xx 77</p>
+                    <div class="mil-buttons">
+                        <a href="contact-frl.html" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
+                        <div class="mil-tp-btn">
+                            <div class="mil-menu-btn"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mil-menu-frame">
+                <div class="mil-menu-window">
+                    <div class="mil-menu-section mil-inner-scroll" id="swupMenu">
+                        <ul class="mil-main-menu mil-c-gone">
+                            <li class="mil-has-children">
+                                <a href="#.">Pages</a>  
+                                <ul>
+                                    <li><a href="home-1.html">Home</a></li>
+                                    <li class="mil-current"><a href="about-frl.html">About</a></li>
+                                    <li><a href="team-frl.html">Team</a></li>
+                                    <li><a href="contact-frl.html">Contact</a></li>
+                                    <li><a href="services-frl.html">Services</a></li>
+                                    <li><a href="blog-frl.html">Blog</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mil-bottom">
+                        <div class="mil-blog-section">
+                            <div class="mil-jcb mil-aic">
+                                <h4 class="mil-head4 mil-mb30">Latest from blog</h4>
+                                <div class="mil-sb-nav mil-mb30">
+                                    <div class="mil-slider-btn mil-sb-prev mil-c-gone"><i class="fal fa-arrow-left"></i></div>
+                                    <div class="mil-slider-btn mil-sb-next mil-c-gone"><i class="fal fa-arrow-right"></i></div>
+                                </div>
+                            </div>
+                            <div class="swiper-container mil-blog-slider-sm">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="publication-frl.html" class="mil-blog-card-sm mil-c-gone">
+                                            <div class="mil-cover">
+                                                <div class="mil-hover-frame">
+                                                    <img src="img/blog/1.jpg" alt="cover">
+                                                </div>
+                                            </div>
+                                            <div class="mil-text-frame">
+                                                <h4 class="mil-head6 mil-max-1row-text">How to Become a Graphic Designer in 10 Simple Steps</h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mil-social-section">
+                            <ul class="mil-social mil-c-gone">
+                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fixed elements end -->
+
+        <!-- page transition -->
+        <div class="mil-transition-fade" id="swup">
+            <div class="mil-transition-frame">
+
+                <!-- content -->
+                <div id="smooth-content" class="mil-content">
+
+                    <!-- hero -->
+                    <div class="mil-hero-1 mil-sm-hero mil-up" id="top">
+                        <div class="container mil-hero-main mil-relative mil-aic">
+                            <div class="mil-hero-text mil-scale-img" data-value-1="1.3" data-value-2="0.95">
+                                <div class="mil-text-pad"></div>
+                                <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
+                                    <li>
+                                        <a href="home-1.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="about-frl.html">About</a>
+                                    </li>
+                                </ul>
+                                <div class="mil-word-frame">
+                                    <h1 class="mil-display2 mil-rubber">About <span class="mil-a2">Us</span></h1>
+                                    <div class="mil-s-4"><img src="img/shapes/4.png" alt="shape"></div>
+                                </div>
+                            </div>
+                            <div class="mil-shapes mil-scale-img" data-value-1=".7" data-value-2="1.11">
+                                <div class="mil-s-2"><img src="img/shapes/2.png" alt="shape"></div>
+                                <div class="mil-s-3"><img src="img/shapes/3.png" alt="shape"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- hero end -->
+
+                    <!-- about intro -->
+                    <div class="mil-p-160-100">
+                        <div class="container">
+                            <div class="row mil-jcb">
+                                <div class="col-12">
+                                    <p class="mil-stylized mil-m2 mil-mb60 mil-up">Who we are</p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h2 class="mil-head1 mil-mb60 mil-up">The <span class="mil-a2">Vision</span><br>Behind El-Roi</h2>
+                                </div>
+                                <div class="col-lg-7">
+                                    <p class="mil-text-md mil-mb30 mil-up">At <span class="txt-blk">EL-ROI Markeative Solutions</span>, we don't just manage digital presence — we architect digital dominance. As a <span class="txt-blk">360° Digital Marketing agency</span>, we realized early on that a brilliant creative strategy is only as strong as the technology supporting it.</p>
+                                    <p class="mil-text-md mil-mb30 mil-up">While most agencies stop at the "creative," we go deeper. Through our sister concern, <span class="mil-a2"><a href="https://elroiitsolutions.com/" target="_blank" style="color: inherit; text-decoration: none;">EL-ROI IT Solutions</a></span> — a dedicated IT and software development firm — we bring a level of technical rigor to marketing that few can match.</p>
+                                    <p class="mil-text-md mil-mb60 mil-up">This unique relationship allows us to bridge the gap between <span class="txt-blk">high-impact storytelling</span> and <span class="txt-blk">robust technical execution</span>, delivering end-to-end solutions that amplify your brand's reach and revenue.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- about intro end -->
+
+                    <!-- counters -->
+                    <div class="mil-p-0-160">
+                        <div class="container">
+                            <div class="row mil-jcc">
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="mil-counter-item mil-mb30 mil-768-mb60 mil-up">
+                                        <h4 class="mil-offset-number mil-up">14<span class="mil-a2">+</span></h4>
+                                        <div class="mil-counter-text">
+                                            <h5 class="mil-head4 mil-m1 mil-up">Years of<br>Experience</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="mil-counter-item mil-mb30 mil-768-mb60 mil-up">
+                                        <h4 class="mil-offset-number mil-up">45<span class="mil-a2">+</span></h4>
+                                        <div class="mil-counter-text">
+                                            <h5 class="mil-head4 mil-m1 mil-up">Happy<br>Clients</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="mil-counter-item mil-mb30 mil-768-mb60 mil-up">
+                                        <h4 class="mil-offset-number mil-up">57<span class="mil-a2">+</span></h4>
+                                        <div class="mil-counter-text">
+                                            <h5 class="mil-head4 mil-m1 mil-up">Projects<br>Delivered</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="mil-counter-item mil-mb30 mil-up">
+                                        <h4 class="mil-offset-number mil-up">5<span class="mil-a2">+</span></h4>
+                                        <div class="mil-counter-text">
+                                            <h5 class="mil-head4 mil-m1 mil-up">Industry<br>Awards</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- counters end -->
+
+                    <!-- half container CTA -->
+                    <div class="container">
+                        <div class="mil-half-container mil-up">
+                            <div class="mil-text-box mil-g-m1 mil-p-160-160">
+                                <p class="mil-stylized mil-m2 mil-mb60 mil-up">Our Mission</p>
+                                <h2 class="mil-display3 mil-rubber mil-mb60 mil-m4 mil-up">We <span class="mil-a1">transform</span> brands with strategy, <span class="mil-a1">creativity</span>, and technology.</h2>
+                                <p class="mil-text-md mil-deco-text mil-shortened mil-up">We believe that the best marketing is born when <span class="mil-a2">art meets engineering</span>. Our integrated approach ensures every campaign is not only visually stunning but technically flawless.</p>
+                            </div>
+                            <div class="mil-image-box">
+                                <div class="mil-image-frame">
+                                    <img src="img/pages/4.jpg" alt="about agency" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mil-aic mil-jcb mil-no-g">
+                            <div class="col-lg-6">
+                                <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
+                            </div>
+                            <div class="col-lg-6 mil-992-gone">
+                                <div class="mil-text-pad">
+                                    <p class="mil-stylized mil-up">Designing a Better World Today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- half container CTA end -->
+
+                    <!-- core values -->
+                    <div class="mil-p-160-100">
+                        <div class="container">
+                            <div class="row mil-mb60">
+                                <div class="col-12">
+                                    <p class="mil-stylized mil-m2 mil-mb60 mil-up">What drives us</p>
+                                    <h2 class="mil-head1 mil-up">Our Core <span class="mil-a1">Values</span></h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-lightbulb"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Innovation First</h4>
+                                        <p class="mil-value-desc">We stay ahead of industry trends, leveraging cutting-edge technologies and creative methodologies to deliver solutions that set new standards.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-handshake"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Client Partnership</h4>
+                                        <p class="mil-value-desc">We treat every client as a long-term partner. Your success is our success, and we invest deeply in understanding your business goals and audience.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-chart-bar"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Data-Driven Results</h4>
+                                        <p class="mil-value-desc">Creativity fuelled by data. We measure, analyze, and optimize every campaign to ensure maximum ROI and sustainable growth for your brand.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-gem"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Premium Quality</h4>
+                                        <p class="mil-value-desc">Every deliverable — from a social media post to a full branding suite — is crafted with meticulous attention to detail and a commitment to excellence.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-bolt"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Agile Execution</h4>
+                                        <p class="mil-value-desc">Markets move fast, and so do we. Our agile workflows ensure rapid iterations, quick turnarounds, and adaptive strategies that keep your brand relevant.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="mil-value-card mil-mb60 mil-up">
+                                        <div class="mil-value-icon">
+                                            <i class="far fa-shield-check"></i>
+                                        </div>
+                                        <h4 class="mil-value-title">Integrity & Trust</h4>
+                                        <p class="mil-value-desc">Transparent communication, honest reporting, and ethical practices form the foundation of every relationship we build with our clients.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- core values end -->
+
+                    <!-- journey timeline -->
+                    <div class="mil-p-0-160">
+                        <div class="container">
+                            <div class="row mil-jcb">
+                                <div class="col-lg-5">
+                                    <p class="mil-stylized mil-m2 mil-mb60 mil-up">Our Story</p>
+                                    <h2 class="mil-head1 mil-mb60 mil-up">The <span class="mil-a2">Journey</span><br>So Far</h2>
+                                    <p class="mil-text-md mil-deco-text mil-mb60 mil-up">From humble beginnings to becoming a recognized name in creative digital marketing, here's how El-Roi Markeative Solutions evolved over the years.</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mil-timeline mil-up">
+                                        <div class="mil-timeline-item">
+                                            <p class="mil-timeline-year">2011</p>
+                                            <h5 class="mil-timeline-title">The Spark</h5>
+                                            <p class="mil-timeline-desc">Founded with a small team and a bold vision — to merge creative storytelling with cutting-edge technology for brands that demand more.</p>
+                                        </div>
+                                        <div class="mil-timeline-item">
+                                            <p class="mil-timeline-year">2015</p>
+                                            <h5 class="mil-timeline-title">Expanding Horizons</h5>
+                                            <p class="mil-timeline-desc">Launched our dedicated social media management and paid advertising divisions, helping over 20 brands scale their online presence.</p>
+                                        </div>
+                                        <div class="mil-timeline-item">
+                                            <p class="mil-timeline-year">2019</p>
+                                            <h5 class="mil-timeline-title">IT Synergy</h5>
+                                            <p class="mil-timeline-desc">Partnered with EL-ROI IT Solutions to offer end-to-end digital transformation — from brand strategy to custom software development.</p>
+                                        </div>
+                                        <div class="mil-timeline-item">
+                                            <p class="mil-timeline-year">2023</p>
+                                            <h5 class="mil-timeline-title">Global Reach</h5>
+                                            <p class="mil-timeline-desc">Crossed 45+ clients across multiple industries, earning recognition for data-driven campaigns and award-winning creative work.</p>
+                                        </div>
+                                        <div class="mil-timeline-item">
+                                            <p class="mil-timeline-year">2025</p>
+                                            <h5 class="mil-timeline-title">The Next Chapter</h5>
+                                            <p class="mil-timeline-desc">Continuing to push boundaries with AI-driven marketing strategies, immersive brand experiences, and a relentless pursuit of excellence.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- journey timeline end -->
+
+                    <!-- file explorer -->
+                   
+
+                    <!-- footer -->
+                    <footer class="mil-footer mil-p-160-160">
+                        <div class="container">
+                            <div class="row mil-no-g">
+                                <div class="col-lg-6 mil-up">
+                                    <a href="contact-frl.html" class="mil-footer-contact mil-mb90">
+                                        <h6 class="mil-footer-link mil-rubber mil-m1">Let's TALK</h6>
+                                        <span class="mil-stylized-btn mil-c-gone">
+                                            <i class="fal fa-arrow-up"></i>
+                                            <span>Read more</span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="mil-footer-menu-frame mil-mb90 mil-up">
+                                        <ul class="mil-footer-menu">
+                                            <li><a href="home-1.html" class="mil-c-gone">Home</a></li>
+                                            <li><a href="services-frl.html" class="mil-c-gone">Services</a></li>
+                                            <li><a href="about-frl.html" class="mil-c-gone">About</a></li>
+                                            <li><a href="contact-frl.html" class="mil-c-gone">Contact</a></li>
+                                        </ul>
+                                        <ul class="mil-social mil-c-gone">
+                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="mil-footer-bottom mil-up">
+                                        <p class="mil-text-sm">©2025 El-Roi Markeative Solutions. All rights reserved.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- footer end -->
+
+                </div>
+                <!-- content -->
+
+            </div>
+        </div>
+        <!-- page transition -->
+
+    </div>
+    <!-- wrapper end -->
+
+    <!-- swup js -->
+    <script src="js/plugins/swup.min.js"></script>
+    <!-- gsap js -->
+    <script src="js/plugins/gsap.min.js"></script>
+    <!-- scroll smoother -->
+    <script src="js/plugins/ScrollSmoother.min.js"></script>
+    <!-- scroll trigger js -->
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
+    <!-- scroll to js -->
+    <script src="js/plugins/ScrollTo.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/plugins/swiper.min.js"></script>
+    <!-- parallax js -->
+    <script src="js/plugins/parallax.js"></script>
+
+    <!-- pixy js -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
