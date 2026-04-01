@@ -5879,3 +5879,97 @@ footer
 .mil-subscribe-form button i {
   font-size: 24px;
 }
+ .mil-service-row {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.mil-service-left {
+    flex: 1;
+    padding: 40px 20px 40px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.mil-service-row:last-child .mil-service-left {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mil-service-middle {
+    flex-shrink: 0;
+    padding: 40px 30px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+}
+
+.mil-service-row:last-child .mil-service-middle {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mil-stylized-btn:hover {
+    background-color: #FEAF62 !important;
+}
+
+.mil-service-row .mil-stylized-btn:hover i {
+    transform: rotate(90deg) !important;
+}
+
+.mil-service-img {
+    width: 200px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 200px; /* Force height to match for square feel */
+}
+
+/* The Grid Background Square */
+.mil-service-img::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    background-color: #D8D8D8;
+    z-index: 0;
+}
+
+.mil-service-img img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    animation: moveUpside 3s ease-in-out infinite;
+}
+
+@keyframes moveUpside {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@media (max-width: 768px) {
+    .mil-service-row {
+        flex-direction: column;
+    }
+    .mil-service-left, .mil-service-middle {
+        padding: 30px 0;
+    }
+    .mil-service-middle {
+        border-top: none;
+        padding-top: 0;
+    }
+    .mil-service-row:last-child .mil-service-left {
+        border-bottom: none;
+    }
+    .mil-service-img {
+        width: 100%;
+        justify-content: center;
+        padding-top: 0;
+    }
+}
